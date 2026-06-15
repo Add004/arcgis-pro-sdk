@@ -15,6 +15,7 @@
     <insertAccelerator refID="esri_core_editPasteSpecialButton" flags="Ctrl+Alt" key="V" />
     <insertAccelerator refID="esri_core_editCutButton" flags="Ctrl" key="X" />
     <insertAccelerator refID="esri_core_redoButton" flags="Ctrl" key="Y" />
+    <insertAccelerator refID="esri_core_redoButtonAlt" flags="Ctrl+Shift" key="Z" />
     <insertAccelerator refID="esri_core_undoButton" flags="Ctrl" key="Z" />
     <insertAccelerator refID="esri_core_CommandSearchControl" flags="Alt" key="Q" />
     <insertAccelerator refID="esri_core_groupContext" flags="Ctrl" key="G" />
@@ -25,7 +26,7 @@
     <insertAccelerator refID="esri_core_SignOnRootCommand" flags="Alt" key="L"/>
     <insertAccelerator refID="esri_core_notificationButton" flags="Alt" key="W"/>
     <insertAccelerator refID="esri_core_Shortcuts" key="F12"/>
-    <insertAccelerator refID="esri_core_monitorBtn" key="M" flags="Ctrl+Alt" isReadOnly="true"/>
+    <insertAccelerator refID="esri_core_monitorBtn_shortcut" key="M" flags="Ctrl+Alt" isReadOnly="true"/>
 
     <insertAccelerator refID="esri_core_paneOptions" key="OemMinus" flags="Alt" isReadOnly="true"/>
     <insertAccelerator refID="esri_core_changeView" key="Tab" flags="Ctrl" isReadOnly="true"/>
@@ -118,29 +119,26 @@
       <shortcut refID="esri_core_openFileLocation" key="E" flags="Alt"/>
     </insertShortcutTable>
   </shortcutTables>
-  
+
   <DockPaneSets>
-    <!--DockPane Reset for Mapping (Default)-->
-    <insertDockPaneSet id="esri_DockPaneReset_Mapping" caption="Reset Panes for Mapping (Default)">
+    <insertDockPaneSet id="esri_DockPaneReset_Mapping" caption="Mapping" smallImage="PaneStateMapping16">
       <DockPaneID refID="esri_core_projectDockPane"/>
-	    <DockPaneID refID="esri_core_contentsDockPane"/>
+      <DockPaneID refID="esri_core_contentsDockPane"/>
     </insertDockPaneSet>
-	
-   <!--DockPane Reset for Editing-->
-   <insertDockPaneSet id="esri_DockPaneReset_Editing" caption="Reset Panes for Editing">
-     <DockPaneID refID="esri_core_projectDockPane"/>
-     <DockPaneID refID="esri_core_contentsDockPane"/>
-     <DockPaneID refID="esri_editing_AttributesDockPane"/>
-     <DockPaneID refID="esri_editing_EditFeaturesDockPane"/>
-     <DockPaneID refID="esri_editing_CreateFeaturesDockPane"/>
+
+    <insertDockPaneSet id="esri_DockPaneReset_Editing" caption="Editing" smallImage="PaneStateEditing16">
+      <DockPaneID refID="esri_core_projectDockPane"/>
+      <DockPaneID refID="esri_core_contentsDockPane"/>
+      <DockPaneID refID="esri_editing_AttributesDockPane"/>
+      <DockPaneID refID="esri_editing_EditFeaturesDockPane"/>
+      <DockPaneID refID="esri_editing_CreateFeaturesDockPane"/>
     </insertDockPaneSet>
-    
-    <!--DockPane Reset for Geoprocessing-->
-    <insertDockPaneSet id="esri_DockPaneReset_Geoprocessing" caption="Reset Panes for Geoprocessing" >
-       <DockPaneID refID="esri_core_contentsDockPane"/>
-       <DockPaneID refID="esri_core_projectDockPane"/>
-       <DockPaneID refID="esri_geoprocessing_toolBoxes"/>
-    </insertDockPaneSet>  
+
+    <insertDockPaneSet id="esri_DockPaneReset_Geoprocessing" caption="Geoprocessing" smallImage="PaneStateGeoprocessing16">
+      <DockPaneID refID="esri_core_contentsDockPane"/>
+      <DockPaneID refID="esri_core_projectDockPane"/>
+      <DockPaneID refID="esri_geoprocessing_toolBoxes"/>
+    </insertDockPaneSet>
   </DockPaneSets>
 
   <products>
@@ -183,6 +181,8 @@
     <insertCategory id="esri_customizedCommandsCategory" />
     <insertCategory id="esri_commandSearchCategory" />
     <insertCategory id="esri_customItems" />
+    <insertCategory id="esri_ArcMonIndicators"/>
+    <insertCategory id="esri_ArcMonPanes"/>
     
     <insertCategory id="portalTypesFilterEnterprise">
       <component id="portalEnterprise">
@@ -203,6 +203,7 @@
             <typeSubGroup displayName="Group Layers" type="grouplayers"/>
             <typeSubGroup displayName="Tables" type="tables"/>
             <typeSubGroup displayName="Layer Files" type="layerfiles"/>
+            <typeSubGroup displayName="OGC Layers" type="ogclayers"/>
           </typeGroup>
           <typeGroup displayName="Scenes" type="scenes"/>
           <typeGroup displayName="Tools" type="tools">
@@ -238,6 +239,7 @@
             <typeSubGroup displayName="Group Layers" type="grouplayers"/>
             <typeSubGroup displayName="Tables" type="tables"/>
             <typeSubGroup displayName="Layer Files" type="layerfiles"/>
+            <typeSubGroup displayName="OGC Layers" type="ogclayers"/>
           </typeGroup>
           <typeGroup displayName="Scenes" type="scenes"/>
           <typeGroup displayName="Tools" type="tools">
@@ -282,7 +284,7 @@
           <typeGroup displayName="Maps" type="allmaps">
             <typeSubGroup displayName="Maps" type="maps"/>
             <typeSubGroup displayName="Scenes" type="scenes"/>
-            <typeSubGroup displayName="Stereo maps" type="stereoMaps"/>            
+            <typeSubGroup displayName="Stereo maps" type="stereoMaps"/>
             <typeSubGroup displayName="Link charts" type="linkCharts"/>
             <typeSubGroup displayName="Basemaps" type="basemaps"/>
             <typeSubGroup displayName="Map files" type="mapFiles"/>
@@ -292,7 +294,7 @@
             <typeSubGroup displayName="Standalone tables" type="standaloneTables"/>
             <!--Standalone videos will go here when indexing support for them is available-->
             <!--<typeSubGroup displayName="Standalone videos" type="standaloneTables"/>-->
-            <typeSubGroup displayName="Layer files" type="layerFiles"/>            
+            <typeSubGroup displayName="Layer files" type="layerFiles"/>
           </typeGroup>
           <typeGroup displayName="Data" type="allData">
             <typeSubGroup displayName="Feature data" type="featureData"/>
@@ -300,9 +302,9 @@
             <typeSubGroup displayName="Raster and imagery data" type="rasterData"/>
             <typeSubGroup displayName="Datasets" type="datasets"/>
             <typeSubGroup displayName="Connections and databases" type="connectionsAndDatabases"/>
-            <typeSubGroup displayName="Folders" type="folders"/>            
+            <typeSubGroup displayName="Folders" type="folders"/>
           </typeGroup>
-          <typeGroup displayName="Styles" type="styles">            
+          <typeGroup displayName="Styles" type="styles">
           </typeGroup>
           <typeGroup displayName="Layouts" type="layouts">
           </typeGroup>
@@ -315,8 +317,8 @@
             <typeSubGroup displayName="Toolboxes" type="toolBoxes"/>
             <typeSubGroup displayName="Tasks" type="tasks"/>
             <typeSubGroup displayName="Locators" type="locators"/>
-            <typeSubGroup displayName="Notebooks" type="notebooks"/>            
-            <typeSubGroup displayName="Spatial analyst models" type="spatialAnalystModels"/>
+            <typeSubGroup displayName="Notebooks" type="notebooks"/>
+            <typeSubGroup displayName="Spatial Analyst models" type="spatialAnalystModels"/>
             <typeSubGroup displayName="Deep learning" type="deepLearning"/>
           </typeGroup>
           <typeGroup displayName="Other files" type="otherFiles">
@@ -329,9 +331,9 @@
     <insertCategory id="localTypesFilterForFolders">
       <component id="localFolders">
         <content>
-          <typeGroup displayName="Maps" type="allmaps">            
+          <typeGroup displayName="Maps" type="allmaps">
           </typeGroup>
-          <typeGroup displayName="Layers" type="allLayers">            
+          <typeGroup displayName="Layers" type="allLayers">
           </typeGroup>
           <typeGroup displayName="Data" type="allData">
             <typeSubGroup displayName="Feature data" type="featureData"/>
@@ -356,12 +358,67 @@
             <typeSubGroup displayName="Tasks" type="tasks"/>
             <typeSubGroup displayName="Locators" type="locators"/>
             <typeSubGroup displayName="Notebooks" type="notebooks"/>
-            <typeSubGroup displayName="Spatial analyst models" type="spatialAnalystModels"/>
+            <typeSubGroup displayName="Spatial Analyst models" type="spatialAnalystModels"/>
             <typeSubGroup displayName="Deep learning" type="deepLearning"/>
           </typeGroup>
           <typeGroup displayName="Other files" type="otherFiles">
           </typeGroup>
 
+        </content>
+      </component>
+    </insertCategory>
+
+    <insertCategory id="localTypesFilterForDatabases">
+      <component id="localDatabases">
+        <content>
+          <typeGroup displayName="Feature classes" type="featureClasses"/>
+          <typeGroup displayName="Tables" type="tables"/>
+          <typeGroup displayName="Vector datasets" type="vectorDatasets">
+            <typeSubGroup displayName="Feature datasets" type="featureDatasets"/>
+            <typeSubGroup displayName="Catalog datasets" type="catalogDatasets"/>
+            <typeSubGroup displayName="Network datasets" type="networkDatasets"/>
+            <typeSubGroup displayName="Parcel datasets" type="parcelDatasets"/>
+            <typeSubGroup displayName="Utility networks" type="utilityNetworks"/>
+            <typeSubGroup displayName="Trajectory datasets" type="trajectoryDatasets"/>
+            <typeSubGroup displayName="Trace networks" type="traceNetworks"/>
+            <typeSubGroup displayName="Terrains" type="terrains"/>
+            <typeSubGroup displayName="Geometric networks" type="geometricNetworks"/>
+            <typeSubGroup displayName="Topologies" type="topologies"/>
+            <typeSubGroup displayName="Parcel fabrics for ArcMap" type="parcelFabricsForArcMap"/>
+          </typeGroup>
+          <typeGroup displayName="Raster and imagery data" type="allRasterDatasets">
+            <typeSubGroup displayName="Raster datasets" type="rasterDatasets"/>
+            <typeSubGroup displayName="Mosaic datasets" type="mosaicDatasets"/>
+            <typeSubGroup displayName="Oriented imagery datasets" type="orientedImageryDatasets"/>
+          </typeGroup>
+          <typeGroup displayName="Databases" type="databases">
+            <typeSubGroup displayName="File geodatabases" type="fileGeodatabases"/>
+            <typeSubGroup displayName="Mobile geodatabases" type="mobileGeodatabases"/>
+            <typeSubGroup displayName="SQLite databases and geopackages" type="sqliteDatabasesAndGeoPackages"/>
+          </typeGroup>
+          <typeGroup displayName="Connections" type="allDatabaseConnections">
+            <typeSubGroup displayName="Enterprise connections" type="enterpriseConnections"/>
+            <typeSubGroup displayName="Database connections" type="databaseConnections"/>
+            <typeSubGroup displayName="OLE DB Connection" type="oleDbConnections"/>
+          </typeGroup>
+        </content>
+      </component>
+    </insertCategory>
+
+    <insertCategory id="localTypesFilterForMaps">
+      <component id="localMaps">
+        <content>
+          <typeGroup displayName="Maps" type="allMaps">
+            <typeSubGroup displayName="Maps" type="maps"/>
+            <typeSubGroup displayName="Scenes" type="scenes"/>
+            <typeSubGroup displayName="Stereo maps" type="stereoMaps"/>
+            <typeSubGroup displayName="Basemaps" type="basemaps"/>
+            <typeSubGroup displayName="Link charts" type="linkCharts"/>
+          </typeGroup>
+          <typeGroup displayName="Layers" type="layers">
+            <typeSubGroup displayName="Map and scene layers" type="mapAndSceneLayers"/>
+            <typeSubGroup displayName="Standalone tables" type="standaloneTables"/>
+          </typeGroup>
         </content>
       </component>
     </insertCategory>
@@ -380,6 +437,259 @@
       </customControl>
     </insertCategory>
 
+    <insertCategory id="esri_core_ai_assistant_extension_category">
+      <!---->
+      <!--Shape Factory-->
+      <!---->
+      <component id="esri_shapeFactory_assistant_extension" className="ArcGIS.Desktop.Internal.Core.ShapeFactoryAssistantExtension">
+        <content extensionCategoryRefID="ai_cartography_map_production_category">
+          <uiText>
+            <title>Simple Shape Creation</title>
+            <shortDescription>Creates points, lines, rectangles, and polygons from coordinates.</shortDescription>
+          </uiText>
+          <searchDescriptions>
+            <searchDescription>Create a new geometric shape."</searchDescription>
+          </searchDescriptions>
+
+          <aiAssistantFunction name="CreatePoint">
+            <searchDescriptions>
+              <searchDescription>Creates a point shape.</searchDescription>
+            </searchDescriptions>
+          </aiAssistantFunction>
+
+          <aiAssistantFunction name="CreateRectangle">
+            <searchDescriptions>
+              <searchDescription>Creates a rectangle shape.</searchDescription>
+            </searchDescriptions>
+          </aiAssistantFunction>
+
+          <aiAssistantFunction name="CreateLine">
+            <searchDescriptions>
+              <searchDescription>Creates a line shape.</searchDescription>
+            </searchDescriptions>
+          </aiAssistantFunction>
+
+          <aiAssistantFunction name="CreatePolygon">
+            <searchDescriptions>
+              <searchDescription>Creates a polygon shape.</searchDescription>
+            </searchDescriptions>
+          </aiAssistantFunction>
+        </content>
+      </component>
+
+
+      <component id="esri_search_assistant_extension" className="ArcGIS.Desktop.Internal.Search.SearchAssistantExtension">
+        <content extensionCategoryRefID="ai_data_management_category">
+          <uiText>
+            <title>Project and Portal Search</title>
+            <shortDescription>Finds project or portal items by name, type, metadata, or location.</shortDescription>
+          </uiText>
+          <searchDescriptions>
+            <searchDescription>Return a list of items in the project.</searchDescription>
+            <searchDescription>Find items in the project.</searchDescription>
+            <searchDescription>Find data items in the project.</searchDescription>
+            <searchDescription>Find resource items in the project.</searchDescription>
+            <searchDescription>Find feature classes in the project.</searchDescription>
+            <searchDescription>Find shapefiles within a folder.</searchDescription>
+            <searchDescription>Find feature classes in the project.</searchDescription>
+            <searchDescription>Find tables in the project.</searchDescription>
+            <searchDescription>Find maps in the project.</searchDescription>
+            <searchDescription>Find layouts in the project.</searchDescription>
+            <searchDescription>Find reports in the project.</searchDescription>
+            <searchDescription>Find presentations in the project.</searchDescription>
+            <searchDescription>Find tasks in the project.</searchDescription>
+            <searchDescription>Find toolboxes in the project.</searchDescription>
+            <searchDescription>Find models in the project.</searchDescription>
+            <searchDescription>Find scripts in the project.</searchDescription>
+            <searchDescription>Find connection items in the project.</searchDescription>
+
+            <searchDescription>Search for items in the project.</searchDescription>
+            <searchDescription>Search for data items in the project.</searchDescription>
+            <searchDescription>Search for resource items in the project.</searchDescription>
+            <searchDescription>Search for feature classes in the project.</searchDescription>
+            <searchDescription>Search for shapefiles within a folder.</searchDescription>
+            <searchDescription>Search for feature classes in the project.</searchDescription>
+            <searchDescription>Search for tables in the project.</searchDescription>
+            <searchDescription>Search for maps in the project.</searchDescription>
+            <searchDescription>Search for layouts in the project.</searchDescription>
+            <searchDescription>Search for reports in the project.</searchDescription>
+            <searchDescription>Search for presentations in the project.</searchDescription>
+            <searchDescription>Search for tasks in the project.</searchDescription>
+            <searchDescription>Search for toolboxes in the project.</searchDescription>
+            <searchDescription>Search for models in the project.</searchDescription>
+            <searchDescription>Search for scripts in the project.</searchDescription>
+            <searchDescription>Search for connection items in the project.</searchDescription>
+
+            <searchDescription>I need some feature classes</searchDescription>
+            <searchDescription>Are there any shapefiles in the project</searchDescription>
+            <searchDescription>Do I have any lyrx file or mapx file</searchDescription>
+            <searchDescription>Are there some feature classes</searchDescription>
+            <searchDescription>Find me some feature classes</searchDescription>
+            <searchDescription>List all feature classes in a geodatabase</searchDescription>
+
+            <searchDescription>Show the content of a Geodatabase.</searchDescription>
+
+            <searchDescription>Find me some feature layer in my content</searchDescription>
+            <searchDescription>Find plantation feature service in arcgisonline</searchDescription>
+            <searchDescription>Find Yellowstone image service in my organization</searchDescription>
+            <searchDescription>Find Yellowstone mapping service in my group</searchDescription>
+            <searchDescription>Find me some feature service in Living Atlas</searchDescription>
+          </searchDescriptions>
+          <aiAssistantFunction name="SearchOrBrowseChildren">
+            <searchDescriptions>
+              <searchDescription>Find items with a specified name, of a specific type, in a specific container in a project.</searchDescription>
+              <searchDescription>Return a list of items in the project.</searchDescription>
+              <searchDescription>Find data items in a project.</searchDescription>
+              <searchDescription>Find resource items in a project.</searchDescription>
+              <searchDescription>Find feature classes in a project.</searchDescription>
+              <searchDescription>Find files in a project.</searchDescription>
+              <searchDescription>Find feature classes in a project.</searchDescription>
+              <searchDescription>Find tables in a project.</searchDescription>
+              <searchDescription>Find maps in a project.</searchDescription>
+              <searchDescription>Find layouts in a project.</searchDescription>
+              <searchDescription>Find reports in a project.</searchDescription>
+              <searchDescription>Find presentations in a project.</searchDescription>
+              <searchDescription>Find tasks in a project.</searchDescription>
+              <searchDescription>Find toolboxes in a project.</searchDescription>
+              <searchDescription>Find models in a project.</searchDescription>
+              <searchDescription>Find scripts in a project.</searchDescription>
+              <searchDescription>Find connection items in a project.</searchDescription>
+              <searchDescription>Show the contents of a Geodatabase.</searchDescription>
+            </searchDescriptions>
+          </aiAssistantFunction>
+          <aiAssistantFunction name="FormatResults">
+            <searchDescriptions>
+              <searchDescription>Format the results from search or browse.</searchDescription>
+            </searchDescriptions>
+          </aiAssistantFunction>
+        </content>
+      </component>
+
+      <component id="esri_portal_management_assistant_extension" className="ArcGIS.Desktop.Internal.Core.PortalManagementAssistantExtension">
+        <content extensionCategoryRefID="ai_sharing_collaboration_category">
+          <uiText>
+            <title>Portal Connections</title>
+            <shortDescription>Adds, edits, refreshes, lists, and signs in to portal connections.</shortDescription>
+          </uiText>
+          <searchDescriptions>
+            <searchDescription>Manage portal connections.</searchDescription>
+            <searchDescription>Add new portal connections.</searchDescription>
+            <searchDescription>Remove existing portal connections.</searchDescription>
+            <searchDescription>Modify an existing portal connection.</searchDescription>
+            <searchDescription>Set a portal as the active portal connection.</searchDescription>
+            <searchDescription>Provides a list of portal connections.</searchDescription>
+				    <searchDescription>Sign in to a portal connection.</searchDescription>
+          </searchDescriptions>
+          <aiAssistantFunction name="AddPortalConnections">
+				  <searchDescriptions>
+					  <searchDescription>Adds a list of new portals with the specified URLs to the list of portal connections.</searchDescription>
+				  </searchDescriptions>
+			  </aiAssistantFunction>
+			  <aiAssistantFunction name="RemovePortalConnections">
+				  <searchDescriptions>
+					  <searchDescription>Removes a list of existing portals with the specified URLs from the list of portal connections.</searchDescription>
+				  </searchDescriptions>
+			  </aiAssistantFunction>
+			  <aiAssistantFunction name="EditPortalConnection">
+				  <searchDescriptions>
+					  <searchDescription>Modifies an existing portal in the list of portal connections with the specified URL.</searchDescription>
+				  </searchDescriptions>
+			  </aiAssistantFunction>
+			  <aiAssistantFunction name="RefreshPortalConnections">
+			    <searchDescriptions>
+				  <searchDescription>Refreshes the status and availability of a list of portals with the specified URLs in the portal connections list.</searchDescription>
+			    </searchDescriptions>
+			  </aiAssistantFunction>
+          <aiAssistantFunction name="GetActivePortalConnection">
+            <searchDescriptions>
+              <searchDescription>Returns the portal connection currently set as active.</searchDescription>
+            </searchDescriptions>
+          </aiAssistantFunction>
+			  <aiAssistantFunction name="SetAsActivePortalConnection">
+			    <searchDescriptions>
+				  <searchDescription>Sets a portal in the portal connections list as active.</searchDescription>
+				  <searchDescription>Designates a portal as active for sharing and accessing portal content.</searchDescription>
+			    </searchDescriptions>
+			  </aiAssistantFunction>
+			  <aiAssistantFunction name="ListPortalConnections">
+			    <searchDescriptions>
+				  <searchDescription>Returns a list of all portals in the portal connections list.</searchDescription>
+			    </searchDescriptions>
+			  </aiAssistantFunction>
+			  <aiAssistantFunction name="SignInToPortalConnection">
+			    <searchDescriptions>
+				  <searchDescription>Opens the sign in dialog to provide credentials for a portal connection.</searchDescription>
+			    </searchDescriptions>
+			  </aiAssistantFunction>
+		    </content>
+		  </component>
+
+    </insertCategory>
+
+    <insertCategory id="esri_core_ai_enterprise_skill_category" />
+
+    <insertCategory id="esri_core_assistant_extension_capability_category">
+      <component id="ai_mapping_category">
+        <content displayName="Map and Layer Management" description="Supports managing layers, maps, scenes, basemaps, labels, selections, navigation, definition queries, coordinate systems, 3D layer properties, and range filtering."/>
+      </component>
+      <component id="ai_visualization_category">
+        <content displayName="Symbology and Visualization" description="Supports creating and updating feature and raster symbology, visual variables, and style choices across common visualization workflows."/>
+      </component>
+      <component id="ai_data_management_category">
+        <content displayName="Data Search and Management" description="Supports finding project and portal items, opening data design and property views, managing parcel fabric records and tables, and adding data to maps."/>
+      </component>
+      <component id="ai_spatial_analysis_category">
+        <content displayName="Spatial Analysis" description="Functionality for spatial and statistical geoprocessing analysis."/>
+      </component>
+      <component id="ai_geoprocessing_category">
+        <content displayName="Geoprocessing Tools and Toolboxes" description="Supports opening geoprocessing tools, suggesting next tools, and creating toolboxes."/>
+      </component>
+      <component id="ai_3d_gis_category">
+        <content displayName="3D GIS" description="Functionality for working with 3D spatial data and scenes."/>
+      </component>
+      <component id="ai_editing_category">
+        <content displayName="Editing" description="Functionality for editing spatial and attribute data."/>
+      </component>
+      <component id="ai_data_creation_category">
+        <content displayName="Data Creation" description="Functionality for creating new spatial and attribute data."/>
+      </component>
+      <component id="ai_geocoding_address_management_category">
+        <content displayName="Geocoding" description="Supports converting between addresses, places, coordinates, and nearby points of interest."/>
+      </component>
+      <component id="ai_remote_sensing_category">
+        <content displayName="Remote Sensing" description="Functionality for organizing, processing, and displaying remotely sensed data."/>
+      </component>
+      <component id="ai_raster_analysis_category">
+        <content displayName="Hydrology Tool Guidance" description="Provides tool ID suggestions for conditioned DEM, flow direction, and flow accumulation workflows."/>
+      </component>
+      <component id="ai_cartography_map_production_category">
+        <content displayName="Map Production" description="Supports layout management for design, export, and printing."/>
+      </component>
+      <component id="ai_network_transportation_analysis_category">
+        <content displayName="Network and Transportation Analysis" description="Functionality for analyzing, modeling, and optimizing networks and transportation systems."/>
+      </component>
+      <component id="ai_survey_field_data_integration_category">
+        <content displayName="Survey and Field Data Integration" description="Functionality for collecting, managing, and integrating survey and field data."/>
+      </component>
+      <component id="ai_geostatistics_interpolation_category">
+        <content displayName="Geostatistics and Interpolation" description="Functionality for predicting values at unsampled locations to model continuous spatial phenomena."/>
+      </component>
+      <component id="ai_automation_scripting_category">
+        <content displayName="Automation and Scripting" description="Functionality for automating workflows and scripting tasks."/>
+      </component>
+      <component id="ai_sharing_collaboration_category">
+        <content displayName="Portal Connections" description="Supports adding, editing, refreshing, listing, and signing in to portal connections."/>
+      </component>
+      <component id="ai_data_validation_category">
+        <content displayName="Data Quality and Validation" description="Provides validation recommendations, evaluates network connectivity issues, and runs broad spatial and attribute quality checks."/>
+      </component>
+      <component id="ai_knowledge_graph_category">
+        <content displayName="Knowledge Graph" description="Supports creating investigations, exploring investigation results, and connecting related items in knowledge graph link charts."/>
+      </component>
+      <component id="ai_custom_category">
+        <content displayName="Custom Capabilities" description="Components that add custom functionality."/>
+      </component>
+    </insertCategory>
   </categories>
 
   <ribbonToolbar>
@@ -387,12 +697,12 @@
     <!--<control refID="esri_core_notificationControl" size="small"/>-->
     <!--<control refID="esri_core_notificationButton" size="small"/>-->
   </ribbonToolbar>
-  
+
   <quickAccessToolbar>
     <control refID="esri_core_newProjectButton" size="small"/>
     <control refID="esri_core_openProjectButton" size="small"/>
     <control refID="esri_core_saveProjectButton" size="small"/>
-    <control refID="esri_core_undoSplitButton" size="small"/>   
+    <control refID="esri_core_undoSplitButton" size="small"/>
     <control refID="esri_core_redoSplitButton" size="small"/>
     <control refID="esri_dockPaneSetDynamicMenu" size ="small" isChecked="false"/>
     <control refID="esri_mapping_exploreTool" size ="small" isChecked="false"/>
@@ -424,7 +734,7 @@
             <keyCommand id="esri_core_ShowFilterMenu" caption="Filter Menu" tooltip="Show filter menu."/>
             <keyCommand id="esri_core_ShowPortal" caption="Go To Portal" tooltip="Go to Portal."/>
             <keyCommand id="esri_core_ShowComputer" caption="Go To Computer" tooltip="Go to Computer."/>
-            <keyCommand id="esri_core_ShowFavorites" caption="Go To Favorites" tooltip="Go to Favorites."/>
+            <keyCommand id="esri_core_ShowFavorites" caption="Go To My Favorites" tooltip="Go to My Favorites."/>
             <keyCommand id="esri_core_ShowProject" caption="Go To Project" tooltip="Go to Project."/>
             <keyCommand id="esri_core_ActivateCatalogPane" caption="Catalog Pane" tooltip="Go to the Catalog pane." />
           </keyCommands>
@@ -432,7 +742,8 @@
       </panes>
 
       <dockPanes>
-        <dockPane id="esri_core_projectDockPane" caption="Catalog" extendedCaption="Catalog Pane" className="ProjectDockPaneVM" dock="right" width="320">
+        <dockPane id="esri_core_projectDockPane" caption="Catalog" extendedCaption="Catalog Pane"
+                  className="ProjectDockPaneVM" dock="right" width="320" smallImage="CatalogShowTree16">
           <content className="ProjectDockPane" />
           <keyCommands>
             <keyCommand id="esri_core_MoveBack" caption="Go Back" tooltip="Go back to the previous location."/>
@@ -444,21 +755,22 @@
             <keyCommand id="esri_core_PortalDP" caption="Go To Portal" tooltip="Go to Portal."/>
             <keyCommand id="esri_core_ShowComputer" caption="Go To Computer" tooltip="Go to Computer."/>
             <keyCommand id="esri_core_ProjectDP" caption="Go To Project" tooltip="Go to Project."/>
-            <keyCommand id="esri_core_FavoritesDP" caption="Go To Favorites" tooltip="Go to Favorites."/>
+            <keyCommand id="esri_core_FavoritesDP" caption="Go To My Favorites" tooltip="Go to MyFavorites."/>
             <keyCommand id="esri_core_ActivateResourcesPane" caption="Catalog View" tooltip="Go to the Catalog view." />
           </keyCommands>
         </dockPane>
         <!--<dockPane id="esri_core_projectDockPane" caption="Project" className="ProjectDockPaneViewModel" dock="right"  keytip="prj">
           <content className="ProjectDockPaneView" />
         </dockPane>-->
-        <dockPane id="esri_core_contentsDockPane" caption="Contents" className="ContentsDockPaneViewModel" dock="left" width="320" keytip="toc" delayLoadMessage="Open a map or layout view">
+        <dockPane id="esri_core_contentsDockPane" caption="Contents" className="ContentsDockPaneViewModel" dock="left"
+                  width="320" keytip="toc" delayLoadMessage="Open a map or layout view" smallImage="ContentsWindowShow16">
           <content className="ContentsDockPane" />
         </dockPane>
-        <dockPane id="esri_core_notificationDockPane" caption="Notifications" className="ArcGIS.Desktop.Framework.NotificationDockPaneViewModel"
+        <dockPane id="esri_core_notificationDockPane" smallImage="NotificationIndicator16" caption="Notifications" className="ArcGIS.Desktop.Framework.NotificationDockPaneViewModel"
             assembly="ArcGIS.Desktop.Framework.dll"  dock="right"  keytip="">
           <content className="ArcGIS.Desktop.Framework.NotificationDockPane" assembly="ArcGIS.Desktop.Framework.dll" />
         </dockPane>
-        <dockPane id="esri_core_projectHistoryDockPane" caption="History" className="ProjectHistoryDockPaneViewModel"
+        <dockPane id="esri_core_projectHistoryDockPane" smallImage="GenericHistory16" caption="History" className="ProjectHistoryDockPaneViewModel"
                   dock="group" dockWith="esri_core_projectDockPane">
           <content className="ProjectHistoryDockPane" />
         </dockPane>
@@ -471,11 +783,27 @@
           <group refID="esri_core_create" />
           <group refID="esri_core_update" />
           <group refID="esri_metadata_metadataViewGroup" />
+          <group refID="esri_core_favoritesData"/>
+          <group refID="esri_core_portalProject"/>
         </tab>
         <tab id="esri_core_insertTab" caption="Insert"  keytip="N">
-          <group refID="esri_core_projectData"/>     
+          <group refID="esri_core_projectData"/>
+          <group refID="esri_reportTemplates_reportGroup"/>
+          <group refID="esri_reports_reportGroup"/>
+          <group refID="esri_reportTemplates_insertDataGroup"/>
+          <group refID="esri_reports_insertDataGroup"/>
+          <group refID="esri_reportTemplates_insertMapFrameGroup"/>
+          <group refID="esri_reports_insertMapFrameGroup"/>
+          <group refID="esri_reports_insertTextGroup"/>
+          <group refID="esri_layouts_insertMapFrameGroup"/>
+          <group refID="esri_layouts_insertMapSurroundGroup"/>
+          <group refID="esri_project_layerTemplate"/>
+          <group refID="esri_layouts_insertGraphicGroup"/>
+          <group refID="esri_reports_insertGraphicGroup"/>
+          <group refID="esri_presentations_insertPagesGroup"/>
+          <group refID="esri_presentations_insertElementsGroup"/>
           <group refID="esri_project_styles"/>
-          <group refID="esri_core_favoritesData"/>
+          <group refID="esri_core_favoritesDataForInsert"/>
         </tab>
         <tab id="esri_core_analysisTab" caption="Analysis"  keytip="A">
           <group refID="esri_geoprocessing_analysisTools" />
@@ -485,23 +813,21 @@
           <group refID="esri_datasourcesraster_rasterLayerTemplateGroup"/>
         </tab>
         <tab id="esri_core_viewTab" caption="View"  keytip="V">
+          <group refID="esri_mapping_viewGroup"/>
+          <group refID="esri_mapping_syncViewGroup"/>
           <group refID="esri_core_dockWindows" />
           <group refID="esri_core_projectViewOptionsGroup" />
-          <group refID="esri_mapping_syncViewGroup" placeWith="esri_core_dockWindows" insert="before" />
-          <group refID="esri_mapping_viewGroup" placeWith="esri_mapping_syncViewGroup" insert="before" />
-          <!--<group refID="esri_layouts_thumbnailGroup" insert="after" />-->
-          <group refID="esri_mapping_animation" insert="after"/>
-          <group refID="esri_mapping_effectsGroup" insert="after"/>
-          <group refID="esri_mapping_sceneGroup" insert="after"/>
-          <group refID="esri_mapping_viewClippingGroup" insert="after"/>
-          <!--<group refID="esri_mapping_overprint" insert="after"/>-->
-          <group refID="esri_mapping_profileViewGroup" insert="after"/>
-          <group refID="esri_mapping_navigation" insert="after"/>
           <group refID="esri_layouts_thumbnailGroup"/>
           <group refID="esri_mapping_thumbnailGroup"/>
-          <group refID="esri_mapping_accessibilityGroup"/>          
+          <group refID="esri_mapping_accessibilityGroup"/>
+          <group refID="esri_mapping_animation"/>
+          <group refID="esri_mapping_effectsGroup"/>
+          <group refID="esri_mapping_sceneGroup"/>
+          <group refID="esri_mapping_viewClippingGroup"/>
+          <group refID="esri_mapping_profileViewGroup"/>
+          <group refID="esri_mapping_navigation"/>
         </tab>
-        
+
         <tab id="esri_core_previewTab" caption="Preview" condition="esri_core_previewActiveCondition" tabGroupID="esri_core_previewTabGroup" keytip="W" insert="after">
           <group refID="esri_core_previewNavigateGroup" />
           <group refID="esri_core_previewPreviewGroup" />
@@ -524,45 +850,49 @@
       </tabGroups>
 
       <groups>
-        <group id="esri_core_helpGroup" caption="Help" keytip="H">
+        <group id="esri_core_helpGroup" caption="Help" keytip="H" smallImage="ArcGISProHelp16">
           <menu refID="esri_core_helpMenu" size="large"/>
           <button refID="esri_core_learningBtn" size="large" />
         </group>
-        <group id="esri_core_customizeGroup" caption="Customize" keytip="C">
+        <group id="esri_core_customizeGroup" caption="Customize" keytip="C" smallImage="CogWheel16">
           <button refID="esri_core_ribbonBtn" size="middle" />
           <button refID="esri_core_qatBtn" size="middle" />
           <button refID="esri_core_Shortcuts" size="middle" />
         </group>
-        <group id="esri_core_performanceGroup" caption="Performance" keytip="P">
+        <group id="esri_core_performanceGroup" caption="Performance" keytip="P" smallImage="DiagnosticsMonitor16">
           <button refID="esri_core_monitorBtn" size="large" />
         </group>
-        <group id="esri_core_contactGroup" caption="Contact Us" keytip="C">
+        <group id="esri_core_contactGroup" caption="Contact Us" keytip="C" smallImage="SpeechBubbleUI16">
           <button refID="esri_core_communityBtn" size="large" />
           <button refID="esri_core_supportBtn" size="large" />
         </group>
 
         <group id="esri_core_projectData" caption="Project" sizePriorities="25,125,225" smallImage="ArcGISProject16">
-          <button refID="esri_mapping_newMapPalette" size="large" />
-          <gallery refID="esri_layouts_gallery" size="large" />
-          
-          <button refID="esri_reports_newReportSplitButton" size="Large"/>
-          <button refID="esri_presentations_newPresentationButton" size="middle" />
+          <button refID="esri_mapping_newMapPalette"/>
+          <gallery refID="esri_layouts_gallery"/>
+          <button refID="esri_reports_newReportSplitButton"/>
+
+          <button refID="esri_presentations_newPresentationSplitButton" size="middle" />
           <splitButton refID="esri_geodatabase_AddNewOrExistingNotebookSplitButton" size="middle"/>
           <buttonPalette refID="esri_geoprocessing_insertMenu" size="middle"/>
-          
+
           <button refID="esri_layouts_importMap" size="middle" />
           <gallery refID="esri_layouts_templateGallery" size="middle" />
           <buttonPalette refID="esri_task_insertMenu" size="middle"/>
-          
+
           <menu refID="esri_geodatabase_insertMenu" size="large"/>
-          <button refID="esri_geodatabase_addFolderConnectionButton" size="large"/>       
+          <button refID="esri_geodatabase_addFolderConnectionButton" size="large"/>
         </group>
 
         <group id="esri_core_favoritesData" caption="Favorites" sizePriorities="25,125,225" smallImage="FavoriteStar16">
 
         </group>
 
-        <group id="esri_core_projectViewOptionsGroup" caption="Options" smallImage="GenericOptions16" condition="esri_core_projectItem_resourcesPane">
+        <group id="esri_core_favoritesDataForInsert" caption="My Favorites" sizePriorities="25,125,225" smallImage="FavoriteStar16">
+
+        </group>
+
+        <group id="esri_core_projectViewOptionsGroup" caption="Options" smallImage="GenericOptions16" condition="esri_core_projectItem_resourcesPane" launcherButtonID="esri_core_catalogBrowsing_openBackstageOptionsButton">
           <buttonPalette refID="esri_core_popupTooltipPalette" size="large" />
           <button refID="esri_core_projectViewLayoutCheckBoxOpen" size="middle" />
           <buttonPalette refID="esri_core_projectViewDisplayType" size="middle" />
@@ -573,17 +903,17 @@
           <subgroup refID="esri_core_editBtns"/>
         </group>
 
-        <group id="esri_core_organize" caption="Organize" smallImage="EditPaste16">
+        <group id="esri_core_organize" caption="Organize" smallImage="launch16">
           <button refID="esri_core_openButton" size="large" />
           <subgroup refID="esri_core_organizeItems1"/>
           <subgroup refID="esri_core_organizeItems2"/>
           <subgroup refID="esri_core_organizeItems3"/>
         </group>
 
-        <group id="esri_core_update" caption="Update" smallImage="EditPaste16">
+        <group id="esri_core_update" caption="Update" smallImage="GeodatabaseBeingEdited16">
         </group>
 
-        <group id="esri_core_create" caption="Create" smallImage="EditPaste16">
+        <group id="esri_core_create" caption="Create" smallImage="GenericNewSparkleLarge16">
           <dynamicMenu refID="esri_core_newItemsDynamicMenu"/>
           <dynamicMenu refID="esri_core_addItemsDynamicMenu"/>
           <dynamicMenu refID="esri_core_importItemsDynamicMenu"/>
@@ -597,7 +927,7 @@
           <subgroup refID="esri_core_WindowControlsExtensions"/>
         </group>
 
-        <group id="esri_core_previewNavigateGroup" caption="Navigate">
+        <group id="esri_core_previewNavigateGroup" caption="Navigate" smallImage="3DNavigationTool16">
           <button refID="esri_core_previewZoomFullButton" size="small" />
           <button refID="esri_core_previewFixedZoomInButton" size="small" />
           <button refID="esri_core_previewPrevExtentButton" size="small" />
@@ -606,11 +936,11 @@
           <button refID="esri_core_previewNextExtentButton" size="small" />
         </group>
 
-        <group id="esri_core_previewPreviewGroup" caption="Preview">
+        <group id="esri_core_previewPreviewGroup" caption="Preview" smallImage="Basemap16">
           <button refID="esri_core_previewShowBasemap" size="middle" />
         </group>
 
-        <group id="esri_core_previewThumbnail" caption="Thumbnail">
+        <group id="esri_core_previewThumbnail" caption="Thumbnail" smallImage="ItemThumbnailCreate16">
           <button refID="esri_core_previewCaptureThumbnail" size="large" />
         </group>
       </groups>
@@ -622,13 +952,13 @@
           <button refID="esri_core_ShowItemTooltips"/>
           <button refID="esri_core_ShowDetailedItemTooltips"/>
         </buttonPalette>
-        
+
         <buttonPalette id="esri_core_projectViewDisplayType" caption="Display Type" temsInRow="1" showItemCaption="true" keytip="DT">
           <button refID="esri_core_projectDetailsView"/>
           <button refID="esri_core_projectTilesView"/>
         </buttonPalette>
-      
-    </palettes>
+
+      </palettes>
 
       <controls>
         <!-- Actipro shortcuts-->
@@ -671,7 +1001,7 @@
                 smallImage="GenericOptions16" largeImage="GenericOptions32">
           <tooltip heading="Language Settings">Choose the language to display. Languages appear as offline help options after their corresponding language pack for the help is installed.</tooltip>
         </button>
-        <button id="esri_core_learningBtn" caption="Learning Resources" keytip="L" helpContextID="120003935"
+        <button id="esri_core_learningBtn" caption="Learning Resources" keytip="L" helpContextID="120003935" disableIfBusy="false"
                 className="ArcGIS.Desktop.Framework.Help.LearningCmd" assembly="ArcGIS.Desktop.Framework.dll"
                 smallImage="ArcGISLearnColor16" largeImage="ArcGISLearnColor32">
           <tooltip>Build your ArcGIS Pro skills with tutorials and other resources.</tooltip>
@@ -686,17 +1016,21 @@
                 smallImage="QuickAccessToolbar16" largeImage="QuickAccessToolbar32">
           <tooltip heading="Customize Quick Access Toolbar">Add, remove, and reorder commands on the Quick Access Toolbar.</tooltip>
         </button>
-        <button id="esri_core_monitorBtn" caption="Diagnostic Monitor" keytip="M" helpContextID="120002882"
+        <button id="esri_core_monitorBtn" caption="Diagnostic Monitor" keytip="M" helpContextID="120002882" disableIfBusy="false"
                 className="ArcGIS.Desktop.Framework.Help.MonitorCmd" assembly="ArcGIS.Desktop.Framework.dll"
                 smallImage="DiagnosticsMonitor16" largeImage="DiagnosticsMonitor32">
           <tooltip heading="Diagnostic Monitor">Identify the cause of application problems by monitoring the flow of status information, logs, and events.</tooltip>
         </button>
-        <button id="esri_core_supportBtn" caption="Technical Support" keytip="T"
+        <!--This button is for display purposes only in the shortcut window.-->
+        <button id="esri_core_monitorBtn_shortcut" caption="Diagnostic Monitor" smallImage="DiagnosticsMonitor16" largeImage="DiagnosticsMonitor32">
+          <tooltip heading="Diagnostic Monitor">Identify the cause of application problems by monitoring the flow of status information, logs, and events.</tooltip>
+        </button>
+        <button id="esri_core_supportBtn" caption="Technical Support" keytip="T" disableIfBusy="false"
                 className="ArcGIS.Desktop.Framework.Help.SupportCmd" assembly="ArcGIS.Desktop.Framework.dll"
                 smallImage="BusinessAnalystSupport32" largeImage="BusinessAnalystSupport32">
           <tooltip heading="Technical Support">Contact Esri Technical Support to troubleshoot software problems.</tooltip>
         </button>
-        <button id="esri_core_communityBtn" caption="Esri Community" keytip="C"
+        <button id="esri_core_communityBtn" caption="Esri Community" keytip="C" disableIfBusy="false"
                 className="ArcGIS.Desktop.Framework.Help.CommunityCmd" assembly="ArcGIS.Desktop.Framework.dll"
                 smallImage="ArcGISProGeoNetColor16" largeImage="ArcGISProGeoNetColor32">
           <tooltip heading="Esri Community">Engage with the community of ArcGIS Pro users to find answers to your questions, provide answers to others, suggest ideas, and more.</tooltip>
@@ -707,13 +1041,13 @@
             See messages regarding ArcGIS Pro, the project, or items in the project. Notifications are available when there is a blue dot.<disabledText></disabledText>
           </tooltip>
         </button>
-        
+
         <button id="esri_core_SignOnRootCommand" className="SignInRootCmd" caption="SignOn">
           <tooltip heading="Sign-in Status">
             Sign in or out of ArcGIS Online or your ArcGIS organization.
           </tooltip>
         </button>
-           
+
         <button id="esri_itemInfoRefreshButton" className="RefreshCmd" loadOnClick="false"
           caption="Refresh" extendedCaption="Refresh the selected container in the Project pane; on context menu"
           smallImage="GenericRefresh16" helpContextID="">
@@ -882,7 +1216,7 @@ With the Catalog view you can sort items, preview spatial data, edit an item’s
                 smallImage="ProjectRepair16"
                 largeImage="ProjectRepair32">
           <tooltip heading="">
-            Repair the broken project item. 
+            Repair the broken project item.
             <disabledText>A project item can only be repaired when the project's reference to the item is broken, for example, when the file or folder associated with the project item cannot be located on the file system.</disabledText>
           </tooltip>
         </button>
@@ -934,23 +1268,33 @@ With the Catalog view you can sort items, preview spatial data, edit an item’s
             Redo the previous operation.<disabledText></disabledText>
           </tooltip>
         </button>
+        <button id="esri_core_redoButtonAlt" caption="Redo" extendedCaption="Redo the previous operation; on quick access toolbar" className="ArcGIS.Desktop.Framework.UndoRedo.RedoCommand" assembly="ArcGIS.Desktop.Framework.dll" flipImageRTL="true" largeImage="EditRedo_B_32" smallImage="EditRedo_B_16" loadOnClick="false">
+          <tooltip heading="">
+            Redo the previous operation.<disabledText></disabledText>
+          </tooltip>
+        </button>
         <button id="esri_core_Shortcuts" caption="Shortcuts" extendedCaption="Show current shortcuts" keytip="S"
                 className="ArcGIS.Desktop.Internal.Framework.Shortcuts.ShortcutsCmd" assembly="ArcGIS.Desktop.Framework.dll"
                 largeImage="Keyboard32"
                 smallImage="Keyboard16"
-                helpContextID="120003886"
+                helpContextID="120001218#611"
                 loadOnClick="false">
           <tooltip heading="Keyboard Shortcuts">Review or modify current keyboard shortcuts and add new ones.</tooltip>
         </button>
 
         <!--Dockpane control-->
-        <dynamicMenu id="esri_dockPaneSetDynamicMenu" className="ArcGIS.Desktop.Framework.DockPaneSetChooser" assembly="ArcGIS.Desktop.Framework.dll" caption="Reset Panes" extendedCaption="Reset application panes to a predefined set; on View tab and quick access toolbar" largeImage="ResetPanes32" smallImage="ResetPanes16" keytip="RP" hidden="false">
-          <tooltip heading="Reset Panes">
+        <dynamicMenu id="esri_dockPaneSetDynamicMenu"
+                     className="ArcGIS.Desktop.Framework.PaneStates.DockStateMenu"
+                     assembly="ArcGIS.Desktop.Framework.dll"
+                     caption="Pane Sets" extendedCaption="Reset application panes."
+                     largeImage="ResetPanes32" smallImage="ResetPanes16"
+                     keytip="RP" hidden="false">
+          <tooltip heading="Pane Sets">
             Reset application panes to a predefined set.
             <disabledText></disabledText>
           </tooltip>
         </dynamicMenu>
-           
+
 
         <!-- basic operations on project items -->
         <button id="esri_core_rename" caption="Rename" keytip="RN" menuKeytip="R" extendedCaption="Rename the selected item; on context menu"
@@ -972,7 +1316,7 @@ With the Catalog view you can sort items, preview spatial data, edit an item’s
             Open the file location for the selected item.<disabledText></disabledText>
           </tooltip>
         </button>
-        
+
         <button id="esri_core_rename_alias" caption="Change Alias" keytip="CA" extendedCaption="Change the selected item's alias"
                 className="RenameAliasCmd"
                 smallImage="GenericPencil16"
@@ -1003,7 +1347,7 @@ With the Catalog view you can sort items, preview spatial data, edit an item’s
             The current active tool. Click to see the active short-cuts.<disabledText></disabledText>
           </tooltip>
         </customControl>
-        
+
         <customControl id="esri_core_notificationControl" isDropDown="false" className="ArcGIS.Desktop.Framework.NotificationControlViewModel"
             assembly="ArcGIS.Desktop.Framework.dll" smallImage="User16" loadOnClick="false" keytip="W">
           <content className="ArcGIS.Desktop.Framework.NotificationControlView" assembly="ArcGIS.Desktop.Framework.dll"/>
@@ -1013,13 +1357,17 @@ With the Catalog view you can sort items, preview spatial data, edit an item’s
         </customControl>
 
         <customControl id="esri_core_CommandSearchControl" caption="Command Search" isDropDown="false" className="ArcGIS.Desktop.Framework.TellMeControlViewModel" helpContextID="120002723"
-                  assembly="ArcGIS.Desktop.Framework.dll" smallImage="Search_Find16" largeImage="Search_Find32" loadOnClick="false" keytip="H" hidden="true">
+                  assembly="ArcGIS.Desktop.Framework.dll" smallImage="Search_Find16" largeImage="Search_Find32" loadOnClick="false" keytip="Q" hidden="true">
           <content className="ArcGIS.Desktop.Framework.TellMeControlView" assembly="ArcGIS.Desktop.Framework.dll"/>
           <tooltip heading="Command Search">
             Search for and execute commands, tools, and help.<disabledText></disabledText>
           </tooltip>
         </customControl>
-        <button id="esri_core_showContentsDockPane" className="esri_core_module:ShowContents" caption="Contents" extendedCaption="Show the Contents pane; on ribbon" flipImageRTL="true" keytip="CT" largeImage="ContentsWindowShow32" smallImage="ContentsWindowShow16" helpContextID="120003937">
+        <button id="esri_core_showContentsDockPane" className="esri_core_module:ShowContents" caption="Contents"
+                extendedCaption="Show the Contents pane; on ribbon" flipImageRTL="true" keytip="CT"
+                largeImage="ContentsWindowShow32"
+                smallImage="ContentsWindowShow16"
+                helpContextID="120003937">
           <tooltip heading="">
             Show the Contents pane.<disabledText></disabledText>
           </tooltip>
@@ -1050,10 +1398,10 @@ With the Catalog view you can sort items, preview spatial data, edit an item’s
           </tooltip>
         </button>
 
-        <button id="esri_core_projectViewLayoutCheckBoxOpen" className="ArcGIS.Desktop.Internal.Core.ProjectViewChangeLayoutCheckBox" 
+        <button id="esri_core_projectViewLayoutCheckBoxOpen" className="ArcGIS.Desktop.Internal.Core.ProjectViewChangeLayoutCheckBox"
                 condition="esri_core_resourcesPane"
                 largeImage="HideDetailsPanel32"
-                smallImage="HideDetailsPanel16"                
+                smallImage="HideDetailsPanel16"
                 caption="Details Panel" extendedCaption="Show the Details panel in the Catalog view, e.g. to see metadata or style items; on ribbon" keytip="SD" loadOnClick="false">
           <tooltip heading="">
             Show the Details panel in the Catalog view. This lets you preview an item's data, view its metadata, and manage style items within a style.<disabledText></disabledText>
@@ -1133,7 +1481,7 @@ Show information such as an item's thumbnail and tags as well as its location in
           </tooltip>
         </button>
 
-        <button id="esri_core_refresh" caption="Refresh" keytip="RF" menuKeytip="R" className="RefreshCmd" loadOnClick="false" 
+        <button id="esri_core_refresh" caption="Refresh" keytip="RF" menuKeytip="R" className="RefreshCmd" loadOnClick="false"
                 extendedCaption="Refresh the selected item" helpContextID="120002719"
                 largeImage="GenericRefresh32"
                 smallImage="GenericRefresh16">
@@ -1150,7 +1498,7 @@ Show information such as an item's thumbnail and tags as well as its location in
             <disabledText></disabledText>
           </tooltip>
         </button>
-        
+
         <button id="esri_core_addToProject" caption="Add To Project" keytip="AP" className="AddToProjectCmd" loadOnClick="false"
                 largeImage="GenericAddGreen32"
                 smallImage="GenericAddGreen16" menuKeytip="A">
@@ -1165,12 +1513,12 @@ Show information such as an item's thumbnail and tags as well as its location in
                 helpContextID="">
           <tooltip heading="">Remove the item from the project.</tooltip>
         </button>
-        
+
         <button id="esri_addFavoriteButton" className="AddToFavoritesCmd" loadOnClick="false"
-                caption="Add To Favorites" keytip="FA" menuKeytip="F"
+                caption="Add To My Favorites" keytip="FA" menuKeytip="F"
                 extendedCaption="Add an item to project favorites; on context menu for folders, databases, and servers that have been added to the project"
                 condition="esri_projectItem_isValidAndOpenProjectCondition"
-                smallImage="FavoriteStar16" helpContextID="">
+                smallImage="FavoriteStarAdd16" helpContextID="">
           <tooltip heading="">
             Add the item to project favorites. Project favorites saves a reference to the existing item. If the item is not in a location that is accessible from other machines, it won't be available when using a different computer.<disabledText></disabledText>
           </tooltip>
@@ -1270,7 +1618,7 @@ Show information such as an item's thumbnail and tags as well as its location in
             <disabledText></disabledText>
           </tooltip>
         </button>
-        
+
         <button id="esri_core_sortKey" caption="Key" keytip="K" className="SortKeyCmd"
                 largeImage="SortCustom32"
                 smallImage="SortCustom16">
@@ -1287,6 +1635,22 @@ Show information such as an item's thumbnail and tags as well as its location in
           </tooltip>
         </button>
 
+        <button id="esri_core_catalogBrowsing_openBackstageOptionsButton"
+                className="ArcGIS.Desktop.Internal.Core.CatalogBrowsingOptionsButton"
+                caption="Catalog Browsing Options" extendedCaption="Open catalog browsing options">
+          <tooltip heading="Catalog Browsing Options">
+            Set catalog browsing options.<disabledText></disabledText>
+          </tooltip>
+        </button>
+
+        <button id="esri_core_metadata_openBackstageOptionsButton"
+                className="ArcGIS.Desktop.Internal.Core.MetadataOptionsButton"
+                caption="Metadata Options" extendedCaption="Open metadata options">
+          <tooltip heading="Metadata Options">
+            Set metadata options.<disabledText></disabledText>
+          </tooltip>
+        </button>
+
         <dynamicMenu id="esri_core_sortColumns" className="SortDynamicMenu" caption="Sort" keytip="SO" loadOnClick="false"
                      largeImage="SortCustom32"
                      smallImage="SortCustom16">
@@ -1295,9 +1659,9 @@ Show information such as an item's thumbnail and tags as well as its location in
           </tooltip>
         </dynamicMenu>
 
-        <dynamicMenu id="esri_core_addItemsDynamicMenu" className="AddItemsDynamicMenu" 
-                     caption="Add" keytip="AI" 
-                     loadOnClick="false" 
+        <dynamicMenu id="esri_core_addItemsDynamicMenu" className="AddItemsDynamicMenu"
+                     caption="Add" keytip="AI"
+                     loadOnClick="false"
                      largeImage="GenericAddGreen32"
                      smallImage="GenericAddGreen16">
           <tooltip heading="Add">Add an existing item to the project.
@@ -1316,15 +1680,15 @@ Show information such as an item's thumbnail and tags as well as its location in
           </tooltip>
         </dynamicMenu>
 
-        <dynamicMenu id="esri_core_newItemsDynamicMenu" className="NewItemsDynamicMenu" 
-                     caption="New" keytip="NI" 
-                     loadOnClick="false" 
+        <dynamicMenu id="esri_core_newItemsDynamicMenu" className="NewItemsDynamicMenu"
+                     caption="New" keytip="NI"
+                     loadOnClick="false"
                      largeImage="GenericNewSparkleLarge32"
                      smallImage="GenericNewSparkleLarge16">
           <tooltip heading="New">Create a new project item.
             <disabledText></disabledText>
           </tooltip>
-         
+
         </dynamicMenu>
 
         <dynamicMenu id="esri_core_newItemsDynamicMenuForCatalogDockPaneWhitespaceContextMenu" className="NewItemsDynamicMenuForCatalogDockPaneWhitespaceContextMenu"
@@ -1337,7 +1701,7 @@ Show information such as an item's thumbnail and tags as well as its location in
             <disabledText></disabledText>
           </tooltip>
 
-        </dynamicMenu>        
+        </dynamicMenu>
 
         <dynamicMenu id="esri_core_importItemsDynamicMenu" keytip="II" className="ImportItemsDynamicMenu"
                      caption="Import"
@@ -1361,15 +1725,23 @@ Show information such as an item's thumbnail and tags as well as its location in
           </tooltip>
         </dynamicMenu>
 
-        <button id="esri_core_groupContext" className="esri_core_module:GroupAsync" caption="Group" extendedCaption="Group selected items based on context."/>
-        <button id="esri_core_ungroupContext" className="esri_core_module:UngroupAsync" caption="Ungroup" extendedCaption="Ungroup selected items based on context."/>
+        <button id="esri_core_groupContext" className="esri_core_module:GroupAsync" loadOnClick="false" caption="Group" extendedCaption="Group selected items based on context." smallImage="ElementGroup16" largeImage="ElementGroup32">
+          <tooltip heading="">
+            Group the selected elements.<disabledText></disabledText>
+          </tooltip>
+        </button>
+        <button id="esri_core_ungroupContext" className="esri_core_module:UngroupAsync" loadOnClick="false" caption="Ungroup" extendedCaption="Ungroup selected items based on context." smallImage="ElementUnGroup16" largeImage="ElementUnGroup32">
+          <tooltip heading="">
+            Ungroup the selected elements.<disabledText></disabledText>
+          </tooltip>
+        </button>
         <button id="esri_core_exportContext" className="esri_core_module:Export" caption="Export" extendedCaption="Export based on context."/>
         <button id="esri_core_printContext" className="esri_core_module:Print" caption="Print" extendedCaption="Print based on context."/>
       </controls>
 
       <galleries>
       </galleries>
-      
+
       <subgroups>
         <!--<subgroup id="esri_core_options" size="AlwaysMedium">
           <checkBox refID="esri_core_projectViewLayoutCheckBoxOpen" size="middle" />
@@ -1389,11 +1761,11 @@ Show information such as an item's thumbnail and tags as well as its location in
         </subgroup>
 
         <subgroup id="esri_core_WindowControlsExtensions" size="Default">
-          <button refID="esri_workflow_workflowViewPalette" />
+          <button refID="esri_workflow_client_open_workflow_pane" />
           <button refID="esri_aviation_aviationViewPalette"/>
           <button refID="esri_indoors_indoorsViewPalette"/>
         </subgroup>
-                  
+
 
         <subgroup id="esri_core_editBtns" size="MediumThenSmallWhenSmall">
           <button refID="esri_core_editCutButton"/>
@@ -1429,7 +1801,29 @@ Show information such as an item's thumbnail and tags as well as its location in
       </subgroups>
 
       <menus>
-        <menu id="esri_core_helpMenu" caption="Help" keytip="H"
+        <menu id="esri_core_SpecialFolderMenu" caption="Default">
+          <button refID="FolderConnectionProjectNewItemMenu" />
+          <button refID="esri_core_addToProject" separator="true"/>
+          <button refID="esri_addFavoriteButton" separator="true"/>
+          <button refID="esri_addProjectItemToNewProjectsButton"/>
+          <button refID="esri_core_refresh" separator="true"/>
+          <button refID="esri_core_editCopyPaths" separator="true"/>
+          <button refID="esri_core_openFileLocation"/>
+          <button refID="esri_projectItemViewMetadata" separator="true"/>
+          <button refID="esri_projectItemEditMetadata"/>
+        </menu>
+        <menu id="esri_core_SpecialFolderRemoveMenu" caption="Default">
+          <button refID="FolderConnectionProjectNewItemMenu" />
+          <button refID="esri_folderConnectionRemoveButton" separator="true"/>
+          <button refID="esri_addFavoriteButton" separator="true"/>
+          <button refID="esri_addProjectItemToNewProjectsButton"/>
+          <button refID="esri_core_refresh" separator="true"/>
+          <button refID="esri_core_editCopyPaths" separator="true"/>
+          <button refID="esri_core_openFileLocation"/>
+          <button refID="esri_projectItemViewMetadata" separator="true"/>
+          <button refID="esri_projectItemEditMetadata"/>
+        </menu>
+        <menu id="esri_core_helpMenu" caption="Help" keytip="H" flipImageRTL="true" skipIfHebrew="true"
               smallImage="ArcGISProHelp16" largeImage="ArcGISProHelp32">
           <tooltip heading="Help">Open the help documentation on the web or on your computer and set language options. </tooltip>
           <button refID="esri_core_onlineHelpBtn"/>
@@ -1450,8 +1844,9 @@ Show information such as an item's thumbnail and tags as well as its location in
           <tooltip heading="New Database options"/>
           <button refID="esri_geodatabase_newGeoDatabaseButton"/>
           <button refID="esri_geodatabase_newMobileGeoDatabaseButton"/>
-          <button refID="esri_geodatabase_databaseConnectionButton"/>
+          <button refID="esri_geodatabase_databaseConnectionButtonOnContextMenu"/>
           <button refID="esri_geodatabase_newOLEDBConnectionButton"/>
+          <button refID="esri_geodatabase_newGeoPackageButton"/>
         </menu>
         <menu id="esri_core_NewToolboxes" caption="New Toolbox" keytip="NT"
               smallImage="GeoprocessingToolboxNew16">
@@ -1470,10 +1865,10 @@ Show information such as an item's thumbnail and tags as well as its location in
           <button refID="esri_mapping_WMSConnectionButton"/>
           <button refID="esri_mapping_WMTSConnectionButton"/>
         </menu>
-        
+
         <menu id="esri_BrowseDialog_SingleItem" caption="Browse Dialog Single Rename Item">
           <button refID="esri_core_rename"/>
-          <button refID="esri_core_editCopyPaths"/>          
+          <button refID="esri_core_editCopyPaths"/>
         </menu>
 
         <menu id="esri_BrowseDialog_SingleItemWithAlias" caption="Browse Dialog Single Item Rename And Alias">
@@ -1492,9 +1887,11 @@ Show information such as an item's thumbnail and tags as well as its location in
           <button refID="esri_core_newFolderButton"/>
           <button refID="esri_GDBCreateNewFileGeodatabaseButton" />
           <button refID="esri_GDBCreateNewMobileGeodatabaseButton" />
-          <button refID="esri_itemInfoRefreshButton" />
+          <button refID="esri_geodatabase_databaseConnectionButton" />
+          <button refID="esri_GDBCreateNewToolboxAtbxButtonInFolder" />
+          <button refID="esri_itemInfoRefreshButton" separator="true" />
         </menu>
-        
+
         <menu id="esri_projectDefaultContextMenu" caption="Project Menu">
           <tooltip>Show the project menu.</tooltip>
           <dynamicMenu refID="esri_core_newItemsDynamicMenu"/>
@@ -1513,7 +1910,6 @@ Show information such as an item's thumbnail and tags as well as its location in
           <dynamicMenu refID="esri_favoritesItemPersistDynamicMenu" inline="true"/>
           <button refID="esri_removeFavoriteButton" separator="true"/>
           <menu refID="AliasProjectItemMenu"/>
-          <!--<dynamicMenu refID="esri_favoritesGeodatabasePropertyMenu" inline="true"/>-->
         </menu>
       </menus>
 
@@ -1532,17 +1928,21 @@ Show information such as an item's thumbnail and tags as well as its location in
         </splitButton>
 
       </splitButtons>
-      
-    </insertModule>    
+
+    </insertModule>
+    
+    <insertModule id="esri_intel_intelCapabilitiesCheck_module" className="ArcGIS.Desktop.Internal.Core.IntelCapabilitiesCheckModule" caption="Intel Capabilities Check Module" description="Intel Capabilities Check Module" autoLoad="true">
+    </insertModule>
+
   </modules>
-  
+
   <options>
     <insertStartPane refID="esri_core_startPage" />
-  </options>  
-  
-  
+  </options>
+
+
   <propertySheets>
-    <insertSheet id="esri_core_optionsPropertySheet" caption="Options" resizable="true" pageHeight="565" pageWidth="792" hasGroups="true" hidden="false">
+    <insertSheet id="esri_core_optionsPropertySheet" caption="Options" allowPagesWithErrors="true" resizable="true" pageHeight="565" pageWidth="792" hasGroups="true" hidden="false">
       <page id="esri_core_ProjectOptionsPropertyPage" caption="Current Settings" className="ProjectOptionsViewModel" group="Project">
         <content className="ProjectOptionsView" />
       </page>
@@ -1553,9 +1953,9 @@ Show information such as an item's thumbnail and tags as well as its location in
       <page id="esri_core_CatalogBrowsingOptionsPropertyPage" caption="Catalog Browsing" className="CatalogBrowsingOptionsViewModel" group="Application">
         <content className="CatalogBrowsingOptionsView"/>
       </page>
-      
-      
-<!--      <page id="esri_core_ApplicationNotificationsPropertyPage" caption="Notifications" assembly="ArcGIS.Desktop.Framework.dll"
+
+
+      <!--      <page id="esri_core_ApplicationNotificationsPropertyPage" caption="Notifications" assembly="ArcGIS.Desktop.Framework.dll"
             className="ArcGIS.Desktop.Framework.ApplicationNotificationsViewModel" group="Application" insert="after" placeWith="esri_core_ApplicationOptionsPropertyPage">
         <content assembly="ArcGIS.Desktop.Framework.dll" className="ArcGIS.Desktop.Framework.ApplicationNotificationsView"/>
       </page> -->
@@ -1564,7 +1964,7 @@ Show information such as an item's thumbnail and tags as well as its location in
             assembly="ArcGIS.Desktop.Framework.dll" group="Application" insert="after">
         <content className="ArcGIS.Desktop.Framework.DictionaryControl" assembly="ArcGIS.Desktop.Framework.dll"/>
       </page>
-      
+
       <page id="esri_core_LanguagePropertyPage" caption="Language" className="ArcGIS.Desktop.Internal.Core.Language.LanguageVM" group="Application"
             insert="after">
         <content className="ArcGIS.Desktop.Internal.Core.Language.Language"/>
@@ -1573,9 +1973,9 @@ Show information such as an item's thumbnail and tags as well as its location in
                   insert="after" placeWith="esri_core_LanguagePropertyPage">
         <content className="UserInterfaceView"/>
       </page>
-      <page id="esri_mapping_customizePropertyPage" caption="Customize the Ribbon" className="ArcGIS.Desktop.Framework.CustomizeViewModel" 
+      <page id="esri_mapping_customizePropertyPage" caption="Customize the Ribbon" className="ArcGIS.Desktop.Framework.CustomizeViewModel"
             assembly="ArcGIS.Desktop.Framework.dll" group="Application" insert="after" condition="esri_core_noCustomize"/>
-      <page id="esri_mapping_customizeQATPropertyPage" caption="Quick Access Toolbar" className="ArcGIS.Desktop.Framework.CustomizeQATViewModel" 
+      <page id="esri_mapping_customizeQATPropertyPage" caption="Quick Access Toolbar" className="ArcGIS.Desktop.Framework.CustomizeQATViewModel"
             assembly="ArcGIS.Desktop.Framework.dll" group="Application" insert="after" condition="esri_core_noCustomize"/>
       <page id="esri_sharing_SharingPropertyPage" caption="Share and Download" className="LocationOptionsViewModel" group="Application"
                   insert="before" placeWith="esri_metadata_MetadataOptionsPropertyPage">
@@ -1600,11 +2000,11 @@ Show information such as an item's thumbnail and tags as well as its location in
     <insertCondition id="esri_core_search" caption="Search tab">
       <state id="esri_search_State" />
     </insertCondition>
-   
+
     <insertCondition id="esri_browsePlaces_Online_Condition" caption="Browse Places Online">
       <state id="esri_browsePlaces_Online_State" />
     </insertCondition>
-    
+
     <insertCondition id="esri_core_noPanesCondition" caption="No panes active">
       <state id="NoPanes" />
     </insertCondition>
@@ -1712,7 +2112,7 @@ Show information such as an item's thumbnail and tags as well as its location in
       </or>
     </insertCondition>
     <insertCondition id="esri_core_search_orgOnlyCondition" caption="">
-      <and>        
+      <and>
         <state id="esri_core_search_orgOnly" />
       </and>
     </insertCondition>
@@ -1721,7 +2121,7 @@ Show information such as an item's thumbnail and tags as well as its location in
         <state id="esri_core_blockCustomizeDialog" />
       </not>
     </insertCondition>
-    
+
     <!--Preview Item-->
     <insertCondition id="esri_core_previewActiveCondition">
       <and>
@@ -1730,11 +2130,21 @@ Show information such as an item's thumbnail and tags as well as its location in
         <state id="esri_core_previewSelectedState"/>
       </and>
     </insertCondition>
-    
+
     <insertCondition id="esri_core_previewShowBasemapCondition">
       <and>
         <state id="esri_core_previewCanEditBasemapState"/>
       </and>
+    </insertCondition>
+
+    <insertCondition id="esri_core_portalProjectCondition" caption="">
+      <state id="esri_core_currentProjectIsPortalProject_state" />
+    </insertCondition>
+
+    <insertCondition id="esri_core_not_portalProjectCondition" caption="">
+      <not>
+        <state id="esri_core_currentProjectIsPortalProject_state" />
+      </not>
     </insertCondition>
   </conditions>
 
@@ -1765,7 +2175,7 @@ Show information such as an item's thumbnail and tags as well as its location in
     <insertTab id="esri_core_PortalTab" caption="Portals" extendedCaption="Portals page; on Project tab" className="PortalBackstageViewModel" separator="true" keytip="P">
       <content className="PortalBackstage" />
     </insertTab>
-    
+
     <insertTab id="esri_core_LicensingTab" caption="Licensing" extendedCaption="Licensing page; on Project tab" className="LicensingBackstageViewModel" separator="false" keytip="L">
       <content className="ArcGIS.Desktop.Internal.Core.LicensingBackstage" />
     </insertTab>
@@ -1801,5 +2211,37 @@ Show information such as an item's thumbnail and tags as well as its location in
     <control refID="esri_core_undoSplitButton" size="small"/>
     <control refID="esri_core_redoSplitButton" size="small"/>
   </quickAccessToolbar>
+
+  <wizards>
+    <insertWizard id="esri_core_newPortalProjectWizard" pageHeight="666" minHeight="440" pageWidth="613" minWidth="613" isPageListVisible="false" resizable="true" showTitleBar="false" saveWindowPosition="true" leftMargin="0" rightMargin="0" navigationButtonsLeftMargin="10" navigationButtonsRightMargin="10" caption="New Portal Project" >
+      <page id="esri_catalog_newPortalProjectIntroductionPage" className="ArcGIS.Desktop.Core.IntroductionPageViewModel">
+        <content className="ArcGIS.Desktop.Core.IntroductionPageView" />
+      </page>
+      <page id="esri_catalog_newPortalProjectCollaborationChoicePage" className="ArcGIS.Desktop.Core.CollaborationChoicePageViewModel">
+        <content className="ArcGIS.Desktop.Core.CollaborationChoicePageView" />
+      </page>
+      <page id="esri_catalog_newPortalProjectDetailsPage" className="ArcGIS.Desktop.Core.DetailsPageViewModel">
+        <content className="ArcGIS.Desktop.Core.DetailsPageView" />
+      </page>
+      <page id="esri_catalog_newPortalProjectShareWithPage" className="ArcGIS.Desktop.Core.ShareWithPageViewModel">
+        <content className="ArcGIS.Desktop.Core.ShareWithPageView" />
+      </page>
+      <page id="esri_catalog_newPortalProjectDefaultHomePage" className="ArcGIS.Desktop.Core.DefaultHomePageViewModel">
+        <content className="ArcGIS.Desktop.Core.DefaultHomePageView" />
+      </page>
+      <page id="esri_catalog_newPortalProjectDefaultGeodatabasePage" className="ArcGIS.Desktop.Core.DefaultGeodatabasePageViewModel">
+        <content className="ArcGIS.Desktop.Core.DefaultGeodatabasePageView" />
+      </page>
+      <page id="esri_catalog_newPortalProjectDefaultToolboxPage" className="ArcGIS.Desktop.Core.DefaultToolboxPageViewModel">
+        <content className="ArcGIS.Desktop.Core.DefaultToolboxPageView" />
+      </page>
+      <page id="esri_catalog_newPortalProjectMetadataPage" className="ArcGIS.Desktop.Core.MetadataPageViewModel">
+        <content className="ArcGIS.Desktop.Core.MetadataPageView" />
+      </page>
+      <page id="esri_catalog_newPortalProjectSummaryPage" className="ArcGIS.Desktop.Core.SummaryPageViewModel">
+        <content className="ArcGIS.Desktop.Core.SummaryPageView" />
+      </page>
+    </insertWizard>
+  </wizards>
 
 </ArcGIS>
